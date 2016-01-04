@@ -1,0 +1,43 @@
+$card_scale: 1;
+
+/* don't change things beyond this line unless you change the image file */
+
+$card_width: 63px;
+$card_height: 88px;
+$card_margin: 10px;
+
+$suits: ♠, ♥, ♦, ♣;
+$ranks: rank2, rank3, rank4, rank5, rank6, rank7, rank8, rank9, rank10,
+        jack, queen, king, ace;
+
+$special: blank, joker0, joker1;
+$back-of-card: red, blue;
+
+.card {
+  display: inline-block;
+  margin: 2.5px;
+  width: $card_width*$card_scale;
+  height: $card_height*$card_scale;
+  $row: 0;
+  @each $suit in $suits {
+    &.#{$suit} {
+      $column: 0;
+      @each $rank in $ranks {
+        &.#{$rank} {
+          background-size: 959px*$card_scale 500px*$card_scale;
+          background-image: url('/assets/images/cards.png');
+          $x_pos: -($card_margin+$column*($card_width+$card_margin))*$card_scale;
+          $y_pos: -($card_margin+$row*($card_height+$card_margin))*$card_scale;
+          background-position: $x_pos $y_pos;
+        }
+        $column: $column+1;
+      }
+    }
+    $row: $row+1;
+  }
+  .back {
+    $x_pos: -($card_margin+4*($card_width+$card_margin))*$card_scale;
+    $y_pos: -($card_margin+4*($card_height+$card_margin))*$card_scale;
+    background-position: $x_pos $y_pos;
+  }
+}

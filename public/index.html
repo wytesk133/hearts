@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Card Games</title>
+    <meta charset="UTF-8">
+    <!-- TODO: ng-cloak: css before js -->
+    <!-- Twitter Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Others -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/application.css">
+    <!-- TODO: load later with sync and loading spinner -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/cards.css">
+    <!-- socket.io -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- jQuery -->
+    <script src="/assets/vendor/jquery/dist/jquery.min.js"></script>
+    <!-- Twitter Bootstrap -->
+    <script src="/assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- AngularJS -->
+    <script src="/assets/vendor/angular/angular.min.js"></script>
+    <!-- AngularJS Application -->
+    <script src="/assets/js/application.js"></script>
+    <script src="/assets/js/lobby.js"></script>
+    <!-- TODO: load only if require to use -->
+    <!-- https://gist.github.com/endorama/7369006 -->
+    <script src="/assets/js/hearts.js"></script>
+  </head>
+  <body data-ng-app="cardApp" data-ng-controller="MainCtrl" data-ng-strict-di>
+    <div class="container-fluid">
+      <div class="row" data-ng-show="page == 'lobby'" data-ng-include="'partials/lobby.html'"></div>
+      <div class="row" data-ng-show="page == 'waiting'" data-ng-include="'partials/waiting.html'"></div>
+      <div class="row" data-ng-show="page == 'game'" data-ng-include="gameTemplate"></div>
+      <footer class="row">
+        <div class="col-xs-12">
+          <hr>
+          <p>&copy; 2016 Waitaya Krongapiradee</p>
+        </div>
+      </footer>
+    </div>
+    <!-- alert modal -->
+    <div class="modal fade" id="alert" tabindex="-1">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">Error</h4>
+          </div>
+          <div class="modal-body">
+            {{alertMsg}}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end alert modal -->
+  </body>
+</html>

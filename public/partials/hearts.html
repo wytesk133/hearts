@@ -1,0 +1,73 @@
+<link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+<div class="col-xs-12" ng-controller="HeartsCtrl">
+  <h1>You stole my heart 😂</h1>
+  <p><a href="#" onclick="window.location.reload()">Back 2 home</a></p>
+  <!-- TODO: highlight currentPlayer -->
+  <div class="col-xs-12 text-center" ng-class="{active: currentPlayer == north}">
+    <h3>{{members[north].name}}</h3>
+    <p>ในมือมี {{hands[north]}} ใบ  โดนไปแล้ว {{points[north]}} แต้ม</p>
+  </div>
+  <div class="col-xs-4 text-left" ng-class="{active: currentPlayer == west}">
+    <h3>{{members[west].name}}</h3>
+    <p>ในมือมี {{hands[west]}} ใบ  โดนไปแล้ว {{points[west]}} แต้ม</p>
+  </div>
+  <div class="col-xs-4">
+    <div class="col-xs-12 text-center">
+      <div ng-class="field[north].classname || 'card'"></div>
+    </div>
+    <div class="col-xs-4 text-left">
+      <div ng-class="field[west].classname || 'card'"></div>
+    </div>
+    <!-- TODO: heartBroken -->
+    <div class="col-xs-4 text-center">
+      <div ng-if="heartBroken" class="heart-broken">💔</div>
+    </div>
+    <div class="col-xs-4 text-right">
+      <div ng-class="field[east].classname || 'card'"></div>
+    </div>
+    <div class="col-xs-12 text-center">
+      <div ng-class="field[south].classname || 'card'"></div>
+    </div>
+  </div>
+  <div class="col-xs-4 text-right" ng-class="{active: currentPlayer == east}">
+    <h3>{{members[east].name}}</h3>
+    <p>ในมือมี {{hands[east]}} ใบ  โดนไปแล้ว {{points[east]}} แต้ม</p>
+  </div>
+  <div class="col-xs-12 text-center" ng-class="{active: currentPlayer == south}">
+    <h3>{{members[south].name}}</h3>
+    <p>โดนไปแล้ว {{points[south]}} แต้ม</p>
+    <div ng-repeat="card in hand" ng-class="card.classname" ng-click="playCard(card.id)"></div>
+  </div>
+  <!-- scoreboard modal -->
+  <div class="modal fade" id="scoreboard" tabindex="-1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Scoreboard</h4>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped table-hover">
+            <!-- TODO: highlight winner -->
+            <!-- track by $index coz names and scores may not unique -->
+            <thead>
+              <tr>
+                <th ng-repeat="m in members track by $index">{{m.name}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="round in scores track by $index">
+                <td ng-repeat="score in round track by $index">{{score}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <!-- TODO: end game? -->
+          <button type="button" class="btn btn-default" data-dismiss="modal">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end scoreboard modal -->
+</div>

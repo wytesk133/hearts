@@ -1,0 +1,48 @@
+<div class="col-xs-12" ng-controller="LobbyCtrl">
+  <h1>มาเล่นกันเถอะ มาเล่นกันเถอะ <small>หรือจะไม่เล่นก็ได้นะ 🙃</small></h1>
+  <h2>Create Room</h2>
+  <div class="row">
+    <form class="col-md-4" ng-submit="createGame()"> <!--TODO: is this correct -->
+      <fieldset class="form-group">
+        <label for="name">Room Name</label>
+        <input type="text" class="form-control" id="name" required ng-model="name">
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="password">Room Password</label>
+        <input type="text" class="form-control" id="password" placeholder="Leave blank for no password..." ng-model="password">
+      </fieldset>
+      <!-- TODO: http://www.undefinednull.com/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs/ -->
+      <!-- TODO: https://docs.angularjs.org/api/ng/directive/ngOptions -->
+      <fieldset class="form-group">
+        <label for="game">Select Game</label>
+        <select class="form-control" id="game" ng-model="game"
+          ng-options="g.name for g in games track by g.internalName" ng-change="updateCapacity()">
+        </select>
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="capacity">Room Size</label>
+        <select class="form-control" id="capacity" ng-model="capacity" ng-options="i for i in range"> <!-- track by i -->
+        </select>
+      </fieldset>
+      <button type="submit" class="btn btn-primary">Go!</button>
+    </form>
+  </div>
+  <h2 ng-if="rooms.length != 0">Join Room</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="list-group">
+        <!-- TODO: find out how track by exactly works and improves performance
+        from what i know, it won't create a new DOM of same identifier
+        but what will happen if i re-arrange the array or some other value of object change -->
+        <a href="#" class="list-group-item" ng-repeat="r in rooms track by r.id" ng-click="join(r)">
+          <h4 class="list-group-item-heading">
+            <i class="fa fa-lock" ng-if="r.private"></i>
+            {{r.name}}
+            <span class="badge">{{r.member}}/{{r.capacity}}</span>
+          </h4>
+          <p class="list-group-item-text">{{r.game}}</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

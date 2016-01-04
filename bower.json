@@ -1,0 +1,9 @@
+{
+  "name": "play-cards",
+  "dependencies": {
+    "angular": "~1.4.8",
+    "bootstrap": "~3.3.6",
+    "font-awesome": "~4.5.0",
+    "jquery": "~2.1.4"
+  }
+}

@@ -1,0 +1,12 @@
+<div class="col-xs-12">
+  <p>Waiting 4 ppl 2 join ur game {{members.length}}/{{capacity}}... (หมุนๆ~~~)</p>
+  <ul>
+    <!-- TODO: track by for every ng-repeat -->
+    <!-- track by index because player may have the same name -->
+    <li ng-repeat="m in members track by $index">
+      {{m.name}}
+      <i ng-if="m.ready" class="fa fa-check text-success"></i>
+      <i ng-if="!m.ready" class="fa fa-spinner text-success"></i>
+    </li>
+  </ul>
+</div>

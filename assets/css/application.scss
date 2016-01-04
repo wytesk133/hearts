@@ -1,0 +1,11 @@
+html, body {
+  height: 100%;
+}
+/* TODO: sass doesn't minify color name like yui; maybe we need to configure sth */
+div.active > h3 {color:red}
+[ng-click], [data-ng-click], [x-ng-click] {
+    cursor: pointer;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
