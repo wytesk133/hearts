@@ -10,13 +10,14 @@
   "license": "GPL-3.0",
   "dependencies": {
     "babel-connect": "^6.0.2",
-    "express": "^4.13.3",
-    "knuth-shuffle": "^1.0.1",
-    "node-sass-middleware": "^0.9.7",
-    "socket.io": "git+https://github.com/socketio/socket.io.git#709ceba"
+    "bower": "^1.8.14",
+    "express": "^4.18.2",
+    "knuth-shuffle": "^1.0.8",
+    "node-sass-middleware": "^1.1.0",
+    "socket.io": "^4.7.2"
   },
   "private": true,
   "engines": {
-    "node": ">= 4.0.0"
+    "node": ">= 16"
   }
 }
