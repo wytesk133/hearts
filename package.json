@@ -12,12 +12,12 @@
     "babel-connect": "^6.0.2",
     "bower": "^1.8.14",
     "express": "^4.18.2",
+    "express-dart-sass": "^1.0.4",
     "knuth-shuffle": "^1.0.8",
-    "node-sass-middleware": "^1.1.0",
     "socket.io": "^4.7.2"
   },
   "private": true,
   "engines": {
-    "node": ">= 16"
+    "node": ">= 14.0.0"
   }
 }

@@ -16,13 +16,12 @@
 *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-//TODO: change var to let
 // www.sitepoint.com/preparing-ecmascript-6-let-const
 let http = require('http')
 let path = require('path')
 let express = require('express')
 let babelMiddleware = require("babel-connect")
-let sassMiddleware = require('node-sass-middleware')
+let sassMiddleware = require('express-dart-sass')
 
 let app = express()
 let server = http.createServer(app)
@@ -50,7 +49,6 @@ app.use('/assets/css', sassMiddleware({
     dest: path.join(__dirname, 'tmp', 'sass'),
     //dest: path.join(__dirname, 'public', 'assets', 'css'),
     debug: global.development, //TODO: if production write to log file instead
-    sourceComments: global.development,
     outputStyle: global.development ? 'expanded' : 'compressed'
 }))
 //TODO: this is just a quick fix; open a pull request for middleware to send output in request everytime like babel
