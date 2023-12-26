@@ -42,8 +42,15 @@ cardApp.controller('HeartsCtrl', ['$scope', 'socket', '$timeout', ($scope, socke
     })
   }
   socket.on('game:scoreboard', data => {
-    //TODO: tmp
-    $scope.scores = data
+    let accumulated = []
+    accumulated.push(data[0])
+    for (let i = 1; i < data.length; ++i) {
+      accumulated.push([])
+      for (let j = 0; j < data[i].length; ++j) {
+        accumulated[i].push(accumulated[i-1][j] + data[i][j])
+      }
+    }
+    $scope.scores = accumulated
     $('#scoreboard').modal('show')
   })
   // preload image (shows loading spinner)

@@ -11,7 +11,7 @@ cardApp.controller('MainCtrl', ['$scope', 'socket', ($scope, socket) => {
     $scope.capacity = data.capacity
     $scope.page = 'waiting'
     $scope.gameTemplate = `partials/${data.game}.html`
-    window.onbeforeunload = e => 'Dude, are you sure you want to leave? Think of the kittens!'
+    window.onbeforeunload = e => 'Are you sure you want to leave?'
   })
   socket.on('room:members', data => {
     $scope.members = data
