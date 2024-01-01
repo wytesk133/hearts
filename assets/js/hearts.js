@@ -3,11 +3,7 @@ cardApp.controller('HeartsCtrl', ['$scope', 'socket', '$timeout', ($scope, socke
     $scope.hand = data
   })
   socket.on('heart:broken', () => {
-    //TODO: show animation
-    $scope.heartBroken = 1 //fade
-    $timeout(() => {
-      $scope.heartBroken = 0
-    }, 3000)
+    $scope.heartBroken = true
   })
   socket.on('game:state', data => {
     $scope.hands = data.hands
@@ -42,6 +38,8 @@ cardApp.controller('HeartsCtrl', ['$scope', 'socket', '$timeout', ($scope, socke
     })
   }
   socket.on('game:scoreboard', data => {
+    $scope.heartBroken = false
+
     let accumulated = []
     accumulated.push(data[0])
     for (let i = 1; i < data.length; ++i) {
@@ -54,7 +52,7 @@ cardApp.controller('HeartsCtrl', ['$scope', 'socket', '$timeout', ($scope, socke
     $('#scoreboard').modal('show')
   })
   // preload image (shows loading spinner)
-  var img = new Image()
+  let img = new Image()
   img.onload = () => {
     // done with preloading (shows ready tick)
     socket.emit('game:ready', 1)
