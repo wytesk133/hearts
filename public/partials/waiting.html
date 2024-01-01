@@ -1,4 +1,6 @@
 <div class="col-xs-12">
+  <h3>{{roomName}}</h3>
+  <p ng-if="roomPassword != ''">Password: <kbd>{{roomPassword}}</kbd></p>
   <p>Waiting for people to join your game {{members.length}}/{{capacity}}...</p>
   <ul>
     <!-- TODO: track by for every ng-repeat -->

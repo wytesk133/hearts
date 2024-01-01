@@ -3,10 +3,14 @@ html, body {
   overscroll-behavior: none;
 }
 
-div.active > h4 {
-  color: red;
-}
-
 [ng-click], [data-ng-click], [x-ng-click] {
     cursor: pointer;
+}
+
+[ng-controller="HeartsCtrl"] {
+  background-color: lightgrey;
+}
+
+.current-player::before {
+  content: '🖐️ ';
 }

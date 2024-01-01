@@ -8,6 +8,8 @@ cardApp.controller('MainCtrl', ['$scope', 'socket', ($scope, socket) => {
   $scope.page = 'lobby'
 
   socket.on('game:load', data => {
+    $scope.roomName = data.roomName
+    $scope.roomPassword = data.roomPassword
     $scope.capacity = data.capacity
     $scope.page = 'waiting'
     $scope.gameTemplate = `partials/${data.game}.html`

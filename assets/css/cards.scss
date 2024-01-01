@@ -43,7 +43,7 @@ $back-of-card: red, blue;
     $row: $row+1;
   }
   &.back {
-    $x_pos: -($card_margin+3*($card_width+$card_margin))*$card_scale;
+    $x_pos: -($card_margin+4*($card_width+$card_margin))*$card_scale;
     $y_pos: -($card_margin+4*($card_height+$card_margin))*$card_scale;
     background-position: $x_pos $y_pos;
     text-align: center;

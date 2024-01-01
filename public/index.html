@@ -34,7 +34,7 @@
       <div class="row" data-ng-show="page == 'lobby'" data-ng-include="'partials/lobby.html'"></div>
       <div class="row" data-ng-show="page == 'waiting'" data-ng-include="'partials/waiting.html'"></div>
       <div class="row" data-ng-show="page == 'game'" data-ng-include="gameTemplate"></div>
-      <footer class="row">
+      <footer class="row" ng-if="page != 'game'">
         <div class="col-xs-12">
           <hr>
           <p>&copy; 2016 Waitaya Krongapiradee</p>
