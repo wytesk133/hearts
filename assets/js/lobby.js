@@ -35,8 +35,11 @@ cardApp.controller('LobbyCtrl', ['$scope', 'socket', ($scope, socket) => {
     }
     let playerName = $scope.prompt("What's your name?")
     if (playerName === null) return
+    if (playerName === '') {
+      $scope.alert('Your name must not be empty!')
+      return
+    }
     let data = {
-      //TODO: verify at the server side that name is not empty
       name: $scope.name,
       //TODO: permit only allowed characters
       password: $scope.password || '', // TODO: or initialize them first?
@@ -44,7 +47,9 @@ cardApp.controller('LobbyCtrl', ['$scope', 'socket', ($scope, socket) => {
       capacity: $scope.capacity,
       creator: playerName
     }
-    socket.emit('room:create', data)
+    socket.emit('room:create', data, err => {
+      $scope.alert(err)
+    })
   }
 
   $scope.join = room => {
