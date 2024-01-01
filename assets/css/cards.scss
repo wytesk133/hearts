@@ -13,19 +13,26 @@ $ranks: rank2, rank3, rank4, rank5, rank6, rank7, rank8, rank9, rank10,
 $special: blank, joker0, joker1;
 $back-of-card: red, blue;
 
+.placeholder {
+  display: inline-block;
+  margin: 2.5px;
+  width: $card_width*$card_scale;
+  height: $card_height*$card_scale;
+}
+
 .card {
   display: inline-block;
   margin: 2.5px;
   width: $card_width*$card_scale;
   height: $card_height*$card_scale;
+  background-size: 959px*$card_scale 500px*$card_scale;
+  background-image: url('/assets/images/cards.png');
   $row: 0;
   @each $suit in $suits {
     &.#{$suit} {
       $column: 0;
       @each $rank in $ranks {
         &.#{$rank} {
-          background-size: 959px*$card_scale 500px*$card_scale;
-          background-image: url('/assets/images/cards.png');
           $x_pos: -($card_margin+$column*($card_width+$card_margin))*$card_scale;
           $y_pos: -($card_margin+$row*($card_height+$card_margin))*$card_scale;
           background-position: $x_pos $y_pos;
@@ -35,9 +42,18 @@ $back-of-card: red, blue;
     }
     $row: $row+1;
   }
-  .back {
-    $x_pos: -($card_margin+4*($card_width+$card_margin))*$card_scale;
+  &.back {
+    $x_pos: -($card_margin+3*($card_width+$card_margin))*$card_scale;
     $y_pos: -($card_margin+4*($card_height+$card_margin))*$card_scale;
     background-position: $x_pos $y_pos;
+    text-align: center;
   }
+}
+
+.card.back > p {
+  margin-top: 30px;
+  display: inline-block;
+  background-color: lightgreen;
+  border-radius: 10px;
+  padding: 5px;
 }

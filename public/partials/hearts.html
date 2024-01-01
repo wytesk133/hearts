@@ -1,35 +1,44 @@
-<div class="col-xs-12" ng-controller="HeartsCtrl">
-  <p><a href="#" onclick="window.location.reload()">Back to home</a></p>
+<div class="col-xs-12" style="padding:0" ng-controller="HeartsCtrl">
+  <!-- <p><a href="#" onclick="window.location.reload()">Back to home</a></p> -->
   <!-- TODO: highlight currentPlayer -->
   <div class="col-xs-12 text-center" ng-class="{active: currentPlayer == north}">
     <h4>{{members[north].name}}</h4>
-    <p>ในมือมี {{hands[north]}} ใบ  โดนไปแล้ว {{points[north]}} แต้ม</p>
+    <p>Points: {{points[north]}}</p>
+    <div class="card back">
+      <p>{{hands[north]}}</p>
+    </div>
   </div>
-  <div class="col-xs-2 text-left" ng-class="{active: currentPlayer == west}">
+  <div class="col-xs-3 text-center" style="padding:0;overflow:hidden" ng-class="{active: currentPlayer == west}">
     <h4>{{members[west].name}}</h4>
-    <p>ในมือมี {{hands[west]}} ใบ  โดนไปแล้ว {{points[west]}} แต้ม</p>
-  </div>
-  <div class="col-xs-8">
-    <div class="col-xs-12 text-center">
-      <div ng-class="field[north].classname || 'card'"></div>
-    </div>
-    <div class="col-xs-6 text-center">
-      <div ng-class="field[west].classname || 'card'"></div>
-    </div>
-    <div class="col-xs-6 text-center">
-      <div ng-class="field[east].classname || 'card'"></div>
-    </div>
-    <div class="col-xs-12 text-center">
-      <div ng-class="field[south].classname || 'card'"></div>
+    <p>Points: {{points[west]}}</p>
+    <div class="card back">
+      <p>{{hands[west]}}</p>
     </div>
   </div>
-  <div class="col-xs-2 text-right" ng-class="{active: currentPlayer == east}">
+  <div class="col-xs-6" style="padding:0">
+    <div class="col-xs-12 text-center">
+      <div ng-class="field[north].classname || 'placeholder'"></div>
+    </div>
+    <div class="col-xs-6 text-center" style="padding:0">
+      <div ng-class="field[west].classname || 'placeholder'"></div>
+    </div>
+    <div class="col-xs-6 text-center" style="padding:0">
+      <div ng-class="field[east].classname || 'placeholder'"></div>
+    </div>
+    <div class="col-xs-12 text-center">
+      <div ng-class="field[south].classname || 'placeholder'"></div>
+    </div>
+  </div>
+  <div class="col-xs-3 text-center" style="padding:0;overflow:hidden" ng-class="{active: currentPlayer == east}">
     <h4>{{members[east].name}}</h4>
-    <p>ในมือมี {{hands[east]}} ใบ  โดนไปแล้ว {{points[east]}} แต้ม</p>
+    <p>Points: {{points[east]}}</p>
+    <div class="card back">
+      <p>{{hands[east]}}</p>
+    </div>
   </div>
   <div class="col-xs-12 text-center" ng-class="{active: currentPlayer == south}" style="padding:0">
     <h4>{{members[south].name}}</h4>
-    <p>โดนไปแล้ว {{points[south]}} แต้ม</p>
+    <p>Points: {{points[south]}}</p>
     <div ng-repeat="card in hand" ng-class="card.classname" ng-click="playCard(card.id)"></div>
   </div>
   <div class="col-xs-12 text-right" ng-if="heartBroken">
