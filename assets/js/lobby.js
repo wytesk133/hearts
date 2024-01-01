@@ -2,6 +2,8 @@ cardApp.controller('LobbyCtrl', ['$scope', 'socket', ($scope, socket) => {
   // pre-populate a room name
   $scope.name = 'Room-' + Math.floor(Math.random() * 128)
 
+  $scope.rooms = []
+
   socket.on('room:list', data => {
     $scope.rooms = data
   })
