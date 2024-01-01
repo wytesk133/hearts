@@ -3,7 +3,8 @@
   <head>
     <title>Card Games</title>
     <meta charset="UTF-8">
-    <!-- TODO: ng-cloak: css before js -->
+    <!-- ng-cloak -->
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/angular/angular-csp.css">
     <!-- Twitter Bootstrap -->
     <link rel="stylesheet" type="text/css" href="/assets/vendor/bootstrap/dist/css/bootstrap.min.css">
     <!-- Font Awesome -->
@@ -27,7 +28,7 @@
     <!-- https://gist.github.com/endorama/7369006 -->
     <script src="/assets/js/hearts.js"></script>
   </head>
-  <body data-ng-app="cardApp" data-ng-controller="MainCtrl" data-ng-strict-di>
+  <body data-ng-app="cardApp" data-ng-controller="MainCtrl" data-ng-strict-di data-ng-cloak>
     <div class="container-fluid">
       <div class="row" data-ng-show="page == 'lobby'" data-ng-include="'partials/lobby.html'"></div>
       <div class="row" data-ng-show="page == 'waiting'" data-ng-include="'partials/waiting.html'"></div>
