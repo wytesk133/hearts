@@ -10,7 +10,3 @@ html, body {
 [ng-controller="HeartsCtrl"] {
   background-color: lightgrey;
 }
-
-.current-player::before {
-  content: '🖐️ ';
-}

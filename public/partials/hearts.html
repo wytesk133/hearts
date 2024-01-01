@@ -1,43 +1,62 @@
 <div class="col-xs-12" style="padding:0" ng-controller="HeartsCtrl">
-  <!-- <p><a href="#" onclick="window.location.reload()">Back to home</a></p> -->
   <div class="col-xs-12 text-center">
-    <h4 ng-class="{'current-player': currentPlayer == north}">{{members[north].name}}</h4>
-    <p>Points: {{points[north]}}</p>
+    <p>
+      <a class="btn btn-info" href="#" onclick="window.location.reload()" style="position: absolute;left: 10px;top: 10px;">
+        Back to home
+      </a>
+    </p>
+    <h4>
+      <i class="fa fa-hand-o-right" ng-if="currentPlayer == north"></i>
+      {{members[north].name}}
+    </h4>
     <div class="card back">
-      <p>{{hands[north]}}</p>
+      <h5><span class="label label-default">Hand: {{hands[north]}}</span></h5>
+      <h5><span class="label label-danger">Penalties: {{points[north]}}</span></h5>
     </div>
   </div>
-  <div class="col-xs-3 text-center" style="padding:0;overflow:hidden">
-    <h4 ng-class="{'current-player': currentPlayer == west}">{{members[west].name}}</h4>
-    <p>Points: {{points[west]}}</p>
+  <div class="col-xs-3 col-sm-4 text-center" style="padding:0;overflow:hidden">
+    <h4>
+      <i class="fa fa-hand-o-right" ng-if="currentPlayer == west"></i>
+      {{members[west].name}}
+    </h4>
     <div class="card back">
-      <p>{{hands[west]}}</p>
+      <h5><span class="label label-default">Hand: {{hands[west]}}</span></h5>
+      <h5><span class="label label-danger">Penalties: {{points[west]}}</span></h5>
     </div>
   </div>
-  <div class="col-xs-6" style="padding:0">
+  <div class="col-xs-6 col-sm-4" style="padding:0">
     <div class="col-xs-12 text-center">
       <div ng-class="field[north].classname || 'placeholder'"></div>
     </div>
-    <div class="col-xs-6 text-center" style="padding:0">
+    <div class="col-xs-6 col-sm-4 text-center" style="padding:0">
       <div ng-class="field[west].classname || 'placeholder'"></div>
     </div>
-    <div class="col-xs-6 text-center" style="padding:0">
+    <div class="hidden-xs col-sm-4 text-center"></div>
+    <div class="col-xs-6 col-sm-4 text-center" style="padding:0">
       <div ng-class="field[east].classname || 'placeholder'"></div>
     </div>
     <div class="col-xs-12 text-center">
       <div ng-class="field[south].classname || 'placeholder'"></div>
     </div>
   </div>
-  <div class="col-xs-3 text-center" style="padding:0;overflow:hidden">
-    <h4 ng-class="{'current-player': currentPlayer == east}">{{members[east].name}}</h4>
-    <p>Points: {{points[east]}}</p>
+  <div class="col-xs-3 col-sm-4 text-center" style="padding:0;overflow:hidden">
+    <h4>
+      <i class="fa fa-hand-o-right" ng-if="currentPlayer == east"></i>
+      {{members[east].name}}
+    </h4>
     <div class="card back">
-      <p>{{hands[east]}}</p>
+      <h5><span class="label label-default">Hand: {{hands[east]}}</span></h5>
+      <h5><span class="label label-danger">Penalties: {{points[east]}}</span></h5>
     </div>
   </div>
   <div class="col-xs-12 text-center" style="padding:0">
-    <h4 ng-class="{'current-player': currentPlayer == south}">{{members[south].name}}</h4>
-    <p>Points: {{points[south]}}</p>
+    <h4>
+      <i class="fa fa-hand-o-right" ng-if="currentPlayer == south"></i>
+      {{members[south].name}}
+    </h4>
+    <p>
+      <span class="label label-danger">Penalties: {{points[south]}}</span>
+    </p>
     <div ng-repeat="card in hand" ng-class="card.classname" ng-click="playCard(card.id)"></div>
   </div>
   <div class="col-xs-12 text-right" ng-if="heartBroken">
