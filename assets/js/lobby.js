@@ -1,10 +1,16 @@
 cardApp.controller('LobbyCtrl', ['$scope', 'socket', ($scope, socket) => {
+  // pre-populate a room name
+  $scope.name = 'Room-' + Math.floor(Math.random() * 128)
+
   socket.on('room:list', data => {
     $scope.rooms = data
   })
 
   socket.on('game:list', data => {
     $scope.games = data
+    // pre-select a game
+    $scope.game = $scope.games[0]
+    $scope.updateCapacity()
   })
 
   $scope.updateCapacity = () => {
@@ -12,6 +18,7 @@ cardApp.controller('LobbyCtrl', ['$scope', 'socket', ($scope, socket) => {
     for(let i = $scope.game.min; i <= $scope.game.max; i++) {
       $scope.range.push(i)
     }
+    $scope.capacity = $scope.game.min
   }
 
   $scope.createGame = () => {
